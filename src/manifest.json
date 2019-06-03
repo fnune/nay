@@ -1,0 +1,32 @@
+{
+  "name": "Nay!",
+  "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
+  "version": "0.0.0",
+  "description": "Say \"nay!\" to URLs in your blacklist. Disable links and optionally access to matching URLs.",
+  "icons": {
+    "128": "assets/icon-128.png"
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [],
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Nay!",
+    "default_icon": "assets/icon-48.png",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "js": ["dom.js"],
+      "matches": ["*://*/*"]
+    }
+  ]
+}

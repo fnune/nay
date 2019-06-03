@@ -1,0 +1,39 @@
+{
+  "name": "nay",
+  "version": "0.0.0",
+  "description": "Say \"nay!\" to URLs in your blacklist. Disable links and optionally access to matching URLs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack -d",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "test": "jest",
+    "format": "prettier --config ./.prettierrc --write '{**/,}*.{json,md,ts,tsx}' --ignore-path .gitignore",
+    "lint": "tslint --project ./tsconfig.json",
+    "lint:autofix": "npm run lint -- --fix"
+  },
+  "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/html-webpack-plugin": "^3.2.0",
+    "@types/node": "^12.0.4",
+    "@types/webpack": "^4.4.32",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.3",
+    "cross-env": "^5.2.0",
+    "fork-ts-checker-webpack-plugin": "^1.3.4",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.17.1",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}
