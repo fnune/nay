@@ -1,6 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 import webpack from 'webpack'
@@ -61,7 +60,6 @@ const config: webpack.Configuration = {
         toType: 'file',
       },
     ]),
-    new CleanWebpackPlugin(),
   ],
 }
 
