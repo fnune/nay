@@ -13,7 +13,7 @@ const config: webpack.Configuration = {
     background: path.join(src, 'background', 'index.ts'),
     options: path.join(src, 'options', 'index.tsx'),
     popup: path.join(src, 'popup', 'index.tsx'),
-    dom: path.join(src, 'dom', 'index.ts'),
+    block: path.join(src, 'dom', 'block.ts'),
   },
   output: {
     path: build,
