@@ -1,7 +1,7 @@
 {
   "name": "nay",
   "version": "0.0.0",
-  "description": "Say \"nay!\" to URLs in your blacklist. Disable links and optionally access to matching URLs.",
+  "description": "Say \"nay!\" to URLs in your blacklist. Disable links to matching URLs and remember why you did so.",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -d",
