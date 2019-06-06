@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json'],
   },
   module: {
     rules: [
