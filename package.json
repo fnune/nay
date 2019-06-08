@@ -4,12 +4,13 @@
   "description": "Say \"nay!\" to URLs in your blacklist. Disable links to matching URLs and remember why you did so.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack -d",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "test": "jest",
-    "format": "prettier --config ./.prettierrc --write '{**/,}*.{json,md,ts,tsx}' --ignore-path .gitignore",
+    "format": "prettier --config ./.prettierrc --write '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
     "lint": "tslint --project ./tsconfig.json",
     "lint:autofix": "npm run lint -- --fix",
+    "start": "cross-env NODE_ENV=development webpack -d",
+    "test": "jest",
+    "test:format": "prettier --config=./.prettierrc --check '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
     "typecheck": "tsc --noEmit"
   },
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
