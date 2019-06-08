@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import browser from 'webextension-polyfill'
 
 import { block } from '../utils'
 
@@ -8,7 +9,7 @@ const useRules = (): [Rule[], (newRules: Rule[]) => void] => {
   useEffect(() => {
     browser.storage.sync
       .get<NayStorage>('rules')
-      .then(({ rules }) => setRules(rules ? JSON.parse(rules) : []))
+      .then(({ rules: syncedRules }) => setRules(syncedRules ? JSON.parse(syncedRules) : []))
       .catch(console.error)
   }, [])
 

@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 import './block.scss'
 
 const links = document.querySelectorAll('a')

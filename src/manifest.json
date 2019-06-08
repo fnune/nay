@@ -3,9 +3,6 @@
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
   "version": "0.0.0",
   "description": "Say \"nay!\" to URLs in your blacklist. Disable links and optionally access to matching URLs.",
-  "icons": {
-    "128": "assets/icon-128.png"
-  },
   "browser_specific_settings": {
     "gecko": {
       "id": "@nay-extension"
@@ -21,7 +18,6 @@
   },
   "browser_action": {
     "default_title": "Nay!",
-    "default_icon": "assets/icon-48.png",
     "default_popup": "popup.html"
   },
   "options_ui": {
