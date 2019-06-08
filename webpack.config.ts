@@ -1,12 +1,16 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-import webpack from 'webpack'
 import path from 'path'
+import uuid from 'uuid'
+import webpack from 'webpack'
 
 const src = path.join(__dirname, 'src')
 const build = path.join(__dirname, 'build')
+
+/** Injected via webpack.DefinePlugin and sass-loader data */
+const MASKED_URL = `"nay-blocked-${uuid()}"`
 
 const config: webpack.Configuration = {
   entry: {
@@ -20,13 +24,29 @@ const config: webpack.Configuration = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json', '.scss'],
   },
   module: {
     rules: [
       {
-        test: /\.tsx??$/,
-        use: ['babel-loader'],
+        test: /\.tsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader', options: { attrs: { 'data-nay-stylesheet': 'yay' } } },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              data: `$MASKED_URL: ${MASKED_URL};`,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
     ],
@@ -60,6 +80,7 @@ const config: webpack.Configuration = {
         toType: 'file',
       },
     ]),
+    new webpack.DefinePlugin({ MASKED_URL }),
   ],
 }
 

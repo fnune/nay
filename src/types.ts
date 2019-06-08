@@ -9,7 +9,6 @@ declare global {
   interface NayStorage extends Storage {
     rules: SerializedRules
   }
-
 }
 
 export {}
