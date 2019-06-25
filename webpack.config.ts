@@ -34,6 +34,10 @@ const config: webpack.Configuration = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' } ],
+      },
+      {
         test: /\.scss$/,
         use: [
           { loader: 'style-loader', options: { attrs: { 'data-nay-stylesheet': 'yay' } } },
