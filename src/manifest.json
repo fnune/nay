@@ -2,7 +2,7 @@
   "name": "Nay!",
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
   "version": "0.0.0",
-  "description": "Say \"nay!\" to URLs in your blacklist. Disable links and optionally access to matching URLs.",
+  "description": "Say \"nay!\" to URLs in your blacklist. Disable links to matching URLs, and remember why you did so.",
   "browser_specific_settings": {
     "gecko": {
       "id": "@nay-extension"
@@ -29,5 +29,16 @@
       "js": ["block.js"],
       "matches": ["*://*/*"]
     }
-  ]
+  ],
+
+  "icons": {
+    "72": "assets/icon-72x72.png",
+    "96": "assets/icon-96x96.png",
+    "128": "assets/icon-128x128.png",
+    "144": "assets/icon-144x144.png",
+    "152": "assets/icon-152x152.png",
+    "192": "assets/icon-192x192.png",
+    "384": "assets/icon-384x384.png",
+    "512": "assets/icon-512x512.png"
+  }
 }
