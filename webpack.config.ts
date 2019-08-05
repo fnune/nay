@@ -10,7 +10,7 @@ const src = path.join(__dirname, 'src')
 const build = path.join(__dirname, 'build')
 
 /** Injected via webpack.DefinePlugin and sass-loader data */
-const MASKED_URL = `"nay-blocked-${uuid()}"`
+const NAY_CLASS = `"nay-blocked-${uuid()}"`
 
 const config: webpack.Configuration = {
   entry: {
@@ -47,7 +47,7 @@ const config: webpack.Configuration = {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
-              data: `$MASKED_URL: ${MASKED_URL};`,
+              data: `$NAY_CLASS: ${NAY_CLASS};`,
             },
           },
         ],
@@ -84,7 +84,7 @@ const config: webpack.Configuration = {
         toType: 'file',
       },
     ]),
-    new webpack.DefinePlugin({ MASKED_URL }),
+    new webpack.DefinePlugin({ NAY_CLASS }),
   ],
 }
 

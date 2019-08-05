@@ -1,23 +1,5 @@
-a[href='#{$MASKED_URL}'] {
-  position: relative;
-  pointer-events: none;
-
-  * {
-    pointer-events: none;
-  }
-
-  &::after {
-    content: 'Nay!';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    color: white;
-    font-weight: bold;
-    background-color: black;
-    border-radius: 3px;
-    padding: 3px;
-    font-size: 10px;
-    font-family: monospace;
+a[class*='#{$NAY_CLASS}'] {
+  &::before {
+    content: '😤 ';
   }
 }
