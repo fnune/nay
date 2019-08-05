@@ -6,6 +6,8 @@
 
 Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and remember why you did so.
 
+![image](https://user-images.githubusercontent.com/16181067/62499349-a299ef80-b7e2-11e9-9f95-3e915f2c57a6.png)
+
 ## Development
 
 **Build and development scripts:**
