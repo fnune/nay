@@ -19,7 +19,7 @@ Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and rememb
 | `format`        | Runs [Prettier](https://github.com/prettier/prettier) in write mode.                                        |
 | `lint:autofix`  | Runs [tslint](https://github.com/palantir/tslint) in autofix mode.                                          |
 
-The first time you run `npm start`, `web-ext` will throw an exception because there's no build directory. Run `npm run build` first to fix this.
+The first time you run `yarn`, `web-ext` will throw an exception because there's no build directory. Run `yarn build` first to fix this.
 
 **Testing the extension:**
 
