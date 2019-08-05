@@ -10,9 +10,11 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p",
+    "build:extension": "web-ext build --overwrite-dest --source-dir ./build",
     "format": "prettier --config ./.prettierrc --write '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
     "lint": "tslint --project ./tsconfig.json",
     "lint:autofix": "npm run lint -- --fix",
+    "lint:extension": "web-ext lint --source-dir ./build",
     "start": "run-p start:watch start:firefox",
     "start:firefox": "web-ext run --source-dir ./build",
     "start:watch": "cross-env NODE_ENV=development webpack -d",

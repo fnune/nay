@@ -11,3 +11,5 @@ script:
   - yarn test:format
   - yarn lint
   - yarn build
+  - yarn lint:extension
+  - yarn build:extension
