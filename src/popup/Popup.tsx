@@ -2,6 +2,7 @@ import 'bulma/css/bulma.css'
 
 import React, { useEffect, useState } from 'react'
 import { FiTrash2, FiPlusCircle, FiFileText } from 'react-icons/fi'
+import uuid from 'uuid'
 import browser from 'webextension-polyfill'
 
 import { block } from '../utils'
@@ -53,7 +54,7 @@ const Popup: React.FC = () => {
           onSubmit={event => {
             event.preventDefault()
             if (!input) return
-            setRules([...rules, { match: input, reason }])
+            setRules([...rules, { match: input, reason, id: uuid() }])
             setInput('')
             setReason('')
           }}
@@ -99,7 +100,7 @@ const Popup: React.FC = () => {
                     className="button is-small is-outlined"
                     type="button"
                     title="Remove this rule from the list"
-                    onClick={() => setRules(rules.filter(rl => rl.match !== rule.match))}
+                    onClick={() => setRules(rules.filter(rl => rl.id === rule.id))}
                   >
                     <span className="icon">
                       <FiTrash2 />

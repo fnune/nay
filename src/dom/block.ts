@@ -43,8 +43,6 @@ function modifyBlockedLinks({ rules }: NayStorage): void {
     .map(link => ({ link, rule: blocked.find(({ match }) => link.href.includes(match)) }))
     .filter<LinkWithMatchingRule>(isLinkWithMatchingRule)
     .forEach(({ link, rule }) => {
-      console.log(link.textContent)
-
       if (!containsMediaTag(link)) {
         link.classList.add(NAY_CLASS)
       }
