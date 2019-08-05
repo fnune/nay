@@ -35,11 +35,13 @@ const Rules: React.FC = () => {
 
   return (
     <>
-      <h1>Nay! 😤</h1>
-      <p>
-        Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and remember why you
-        did so. <a href="https://github.com/brainlessdeveloper/nay">See the code on GitHub</a>.
-      </p>
+      <div className="content is-small">
+        <h1>Nay! 😤</h1>
+        <p>
+          Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and remember why you
+          did so. <a href="https://github.com/brainlessdeveloper/nay">See the code on GitHub</a>.
+        </p>
+      </div>
       <form
         onSubmit={event => {
           event.preventDefault()
@@ -67,7 +69,7 @@ const Rules: React.FC = () => {
               className="textarea"
               value={reason}
               onChange={({ target: { value } }) => setReason(value)}
-              placeholder="Add a reason why you don't want to see these links again..."
+              placeholder="Add a reason why you don't want to open these links again..."
             />
           </div>
         </div>
@@ -81,7 +83,10 @@ const Rules: React.FC = () => {
         </div>
       </form>
       {!rules.length && <p>You haven't added any rules yet.</p>}
-      <table className="table is-fullwidth is-narrow is-hoverable">
+      <table
+        style={{ marginTop: '12px' }}
+        className="content table is-fullwidth is-narrow is-hoverable"
+      >
         <tbody>
           {rules.map(rule => (
             <tr key={rule.match}>
@@ -90,17 +95,17 @@ const Rules: React.FC = () => {
                   className="button is-small is-outlined"
                   type="button"
                   title="Remove this rule from the list"
-                  onClick={() => setRules(rules.filter(rl => rl.id === rule.id))}
+                  onClick={() => setRules(rules.filter(rl => rl.id !== rule.id))}
                 >
                   <span className="icon">
                     <FiTrash2 />
                   </span>
                 </button>
               </td>
-              <td title={rule.reason}>
-                {rule.match}{' '}
+              <td style={{ verticalAlign: 'middle' }} title={rule.reason}>
+                <span>{rule.match} </span>
                 {!!rule.reason && (
-                  <span className="icon has-text-grey-lighter">
+                  <span className="icon has-text-grey-lighter" style={{ verticalAlign: 'bottom' }}>
                     <FiFileText />
                   </span>
                 )}
