@@ -1,7 +1,7 @@
 {
   "name": "Nay!",
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Say \"nay!\" to URLs in your blacklist. Disable links to matching URLs, and remember why you did so.",
   "browser_specific_settings": {
     "gecko": {
