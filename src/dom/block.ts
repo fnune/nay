@@ -21,6 +21,10 @@ function containsMediaTag(node: HTMLElement): boolean {
   return node.querySelectorAll('img, svg, video, audio, embed, source, track').length > 0
 }
 
+function notifyBlocked(amount: number): void {
+  browser.runtime.sendMessage<NotifyBlockedMessage>({ amount })
+}
+
 function formatReason(rule: Rule) {
   return `
 Nay! 😤
@@ -41,6 +45,8 @@ function modifyBlockedLinks({ rules: rulesString }: NayStorage): void {
   const blocked: LinkWithMatchingRule[] = Array.from(links)
     .map(link => ({ link, rule: rules.find(({ match }) => link.href.includes(match)) }))
     .filter(isLinkWithMatchingRule)
+
+  notifyBlocked(blocked.length)
 
   blocked.forEach(({ link, rule }) => {
     if (!containsMediaTag(link) && link.textContent) {
