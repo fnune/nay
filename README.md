@@ -2,11 +2,19 @@
 
 [![Build Status](https://travis-ci.org/brainlessdeveloper/nay.svg?branch=master)](https://travis-ci.org/brainlessdeveloper/nay)
 
-> An upcoming WebExtension for Firefox and Chrome.
+> A WebExtension for Firefox.
 
 Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and remember why you did so.
 
 ![image](https://user-images.githubusercontent.com/16181067/62499349-a299ef80-b7e2-11e9-9f95-3e915f2c57a6.png)
+
+## Install
+
+<div style="display: flex;">
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/nay/">
+    <img width="64" height="64" src="https://user-images.githubusercontent.com/16181067/64076344-facdef80-ccc3-11e9-99cc-713a66a17c4f.png" />
+  </a>
+</div>
 
 ## Development
 

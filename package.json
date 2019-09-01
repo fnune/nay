@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "Say \"nay!\" to URLs in your blacklist. Disable links to matching URLs and remember why you did so.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brainlessdeveloper/nay.git"
+  },
+  "homepage": "https://github.com/brainlessdeveloper/nay",
+  "bugs": {
+    "url": "https://github.com/brainlessdeveloper/nay/issues",
+    "email": "fausto.nunez@mailbox.org"
+  },
   "engines": {
     "node": ">=12.7.0",
     "npm": ">=6.9.0",
