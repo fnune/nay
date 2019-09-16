@@ -8,6 +8,15 @@ Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and rememb
 
 ![image](https://user-images.githubusercontent.com/16181067/62499349-a299ef80-b7e2-11e9-9f95-3e915f2c57a6.png)
 
+Use this as a way to avoid clicking on links to websites you hate because of their use of dark patterns, GDPR pop-ups that are purposefully hard to complete, disregard for user privacy or any other kind of abuse.
+
+The currently implemented functionality is basic:
+
+- Adding a rule and a reason why it's been added.
+- Prepending an angry emoji 😤 to the text content of matching links.
+- Intercepting clicks on those links with a prompt for confirmation that displays the reason for the blockage.
+- Showing how many links have been blocked in a tab.
+
 ## Install
 
 <div style="display: flex;">
