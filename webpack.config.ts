@@ -40,14 +40,14 @@ const config: webpack.Configuration = {
       {
         test: /\.scss$/,
         use: [
-          { loader: 'style-loader', options: { attrs: { 'data-nay-stylesheet': 'yay' } } },
+          { loader: 'style-loader', options: { attributes: { 'data-nay-stylesheet': 'yay' } } },
           { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
-              data: `$NAY_CLASS: ${NAY_CLASS};`,
+              prependData: `$NAY_CLASS: ${NAY_CLASS};`,
             },
           },
         ],

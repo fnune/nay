@@ -21,6 +21,10 @@ function containsMediaTag(node: HTMLElement): boolean {
   return node.querySelectorAll('img, svg, video, audio, embed, source, track').length > 0
 }
 
+function notifyBlocked(amount: number): void {
+  browser.runtime.sendMessage<NotifyBlockedMessage>({ amount })
+}
+
 function formatReason(rule: Rule) {
   return `
 Nay! 😤
@@ -36,27 +40,29 @@ ${rule.reason}.`
 If you'd like to continue anyway, click OK or press Enter.`
 }
 
-function modifyBlockedLinks({ rules }: NayStorage): void {
-  const blocked: Rule[] = rules ? JSON.parse(rules) : []
+function modifyBlockedLinks({ rules: rulesString }: NayStorage): void {
+  const rules: Rule[] = rulesString ? JSON.parse(rulesString) : []
+  const blocked: LinkWithMatchingRule[] = Array.from(links)
+    .map(link => ({ link, rule: rules.find(({ match }) => link.href.includes(match)) }))
+    .filter(isLinkWithMatchingRule)
 
-  Array.from(links)
-    .map(link => ({ link, rule: blocked.find(({ match }) => link.href.includes(match)) }))
-    .filter<LinkWithMatchingRule>(isLinkWithMatchingRule)
-    .forEach(({ link, rule }) => {
-      if (!containsMediaTag(link) && link.textContent) {
-        link.classList.add(NAY_CLASS)
+  notifyBlocked(blocked.length)
+
+  blocked.forEach(({ link, rule }) => {
+    if (!containsMediaTag(link) && link.textContent) {
+      link.classList.add(NAY_CLASS)
+    }
+
+    link.onclick = event => {
+      const confirmation = confirm(formatReason(rule))
+
+      if (confirmation) {
+        return true
       }
 
-      link.onclick = event => {
-        const confirmation = confirm(formatReason(rule))
-
-        if (confirmation) {
-          return true
-        }
-
-        event.preventDefault()
-      }
-    })
+      event.preventDefault()
+    }
+  })
 }
 
 browser.storage.sync
