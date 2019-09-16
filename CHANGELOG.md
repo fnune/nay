@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.2.1] - 2019-09-16
+
+### Fixed
+
+- Compatibility with Chrome restored in preparation for a Chrome release.
+
 ## [0.2.0] - 2019-09-16
 
 ### Added
