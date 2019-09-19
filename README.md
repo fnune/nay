@@ -44,7 +44,7 @@ The currently implemented functionality is basic:
 | `lint:autofix`    | Runs [tslint](https://github.com/palantir/tslint) in autofix mode.                                          |
 | `zip`             | Builds a ZIP file in `./artifacts` of the source for code review submissions.                               |
 
-The first time you run `yarn`, `web-ext` will throw an exception because there's no build directory. Run `yarn build` first to fix this.
+The first time you run `yarn start`, `web-ext` will throw an exception because there's no build directory. Run `yarn build` first to fix this.
 
 **Testing the extension:**
 
