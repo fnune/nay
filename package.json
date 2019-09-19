@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p",
-    "build:extension": "web-ext build --overwrite-dest --source-dir ./build",
+    "build:extension": "web-ext build --overwrite-dest --source-dir ./build --artifacts-dir ./artifacts",
+    "build:release": "run-s build build:extension zip",
     "format": "prettier --config ./.prettierrc --write '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
     "lint": "tslint --project ./tsconfig.json",
     "lint:autofix": "npm run lint -- --fix",
@@ -29,7 +30,8 @@
     "start:watch": "cross-env NODE_ENV=development webpack -d",
     "test": "jest",
     "test:format": "prettier --config=./.prettierrc --check '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "zip": "mkdir -p ./artifacts && git archive HEAD --format=zip > ./artifacts/nay_-$(git describe --tags $(git rev-list --tags --max-count=1)).source.zip"
   },
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
   "license": "MIT",

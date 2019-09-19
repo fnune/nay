@@ -35,12 +35,14 @@ The currently implemented functionality is basic:
 | Script            | Description                                                                                                 |
 | ----------------- | ----------------------------------------------------------------------------------------------------------- |
 | `build`           | Makes a production build.                                                                                   |
-| `build:extension` | Builds a ZIP file using [web-ext](https://github.com/mozilla/web-ext).                                      |
+| `build:extension` | Builds a ZIP in `./artifacts` file using [web-ext](https://github.com/mozilla/web-ext).                     |
+| `build:release`   | Runs `build`, `build:extension` and `zip` sequentially.                                                     |
 | `start:watch`     | Makes a development build and watches for changes.                                                          |
 | `start:firefox`   | Opens Firefox with the extension and reloads on change using [web-ext](https://github.com/mozilla/web-ext). |
 | `start`           | Runs `start:watch` and `start:firefox` in parallel.                                                         |
 | `format`          | Runs [Prettier](https://github.com/prettier/prettier) in write mode.                                        |
 | `lint:autofix`    | Runs [tslint](https://github.com/palantir/tslint) in autofix mode.                                          |
+| `zip`             | Builds a ZIP file in `./artifacts` of the source for code review submissions.                               |
 
 The first time you run `yarn`, `web-ext` will throw an exception because there's no build directory. Run `yarn build` first to fix this.
 
