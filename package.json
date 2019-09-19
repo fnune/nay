@@ -28,21 +28,30 @@
     "start": "run-p start:watch start:firefox",
     "start:firefox": "web-ext run --source-dir ./build",
     "start:watch": "cross-env NODE_ENV=development webpack -d",
-    "test": "jest",
+    "test": "jest --watch",
+    "test:ci": "jest",
     "test:format": "prettier --config=./.prettierrc --check '{**/,}*.{json,md,ts,tsx,scss}' --ignore-path .gitignore",
     "typecheck": "tsc --noEmit",
     "zip": "mkdir -p ./artifacts && git archive HEAD --format=zip > ./artifacts/nay_-$(git describe --tags $(git rev-list --tags --max-count=1)).source.zip"
   },
   "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
   "license": "MIT",
+  "jest": {
+    "setupFiles": [
+      "jest-webextension-mock"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/html-webpack-plugin": "^3.2.1",
+    "@types/jest": "^24.0.18",
     "@types/node": "^12.6.2",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
@@ -56,6 +65,8 @@
     "file-loader": "^4.0.0",
     "fork-ts-checker-webpack-plugin": "^1.4.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "jest-webextension-mock": "^3.5.0",
     "lodash": "^4.17.14",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",

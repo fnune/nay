@@ -13,3 +13,4 @@ script:
   - yarn build
   - yarn lint:extension
   - yarn build:extension
+  - yarn test:ci

@@ -54,6 +54,7 @@ const Rules: React.FC = () => {
         <div className="field">
           <div className="control">
             <input
+              data-testid="rule-input"
               className="input"
               type="text"
               value={input}
@@ -65,6 +66,7 @@ const Rules: React.FC = () => {
         <div className="field">
           <div className="control">
             <textarea
+              data-testid="reason-input"
               rows={3}
               className="textarea"
               value={reason}
@@ -74,7 +76,12 @@ const Rules: React.FC = () => {
           </div>
         </div>
         <div className="control">
-          <button type="submit" className="button is-primary is-fullwidth" disabled={!input}>
+          <button
+            data-testid="rule-submit-button"
+            type="submit"
+            className="button is-primary is-fullwidth"
+            disabled={!input}
+          >
             <span className="icon">
               <FiPlusCircle />
             </span>
@@ -89,7 +96,7 @@ const Rules: React.FC = () => {
       >
         <tbody>
           {rules.map(rule => (
-            <tr key={rule.match}>
+            <tr data-testid="rule" key={rule.match}>
               <td style={{ width: '10px' }}>
                 <button
                   className="button is-small is-outlined"
