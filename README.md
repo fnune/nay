@@ -1,6 +1,6 @@
 # Nay!
 
-[![Build Status](https://travis-ci.org/brainlessdeveloper/nay.svg?branch=master)](https://travis-ci.org/brainlessdeveloper/nay)
+[![Build Status](https://travis-ci.org/fnune/nay.svg?branch=master)](https://travis-ci.org/fnune/nay)
 
 > A WebExtension for Firefox and Chrome.
 
@@ -41,7 +41,7 @@ The currently implemented functionality is basic:
 | `start:firefox`   | Opens Firefox with the extension and reloads on change using [web-ext](https://github.com/mozilla/web-ext). |
 | `start`           | Runs `start:watch` and `start:firefox` in parallel.                                                         |
 | `format`          | Runs [Prettier](https://github.com/prettier/prettier) in write mode.                                        |
-| `lint:autofix`    | Runs [tslint](https://github.com/palantir/tslint) in autofix mode.                                          |
+| `lint:autofix`    | Runs [eslint](https://eslint.org/) in autofix mode.                                                         |
 | `zip`             | Builds a ZIP file in `./artifacts` of the source for code review submissions.                               |
 
 The first time you run `yarn start`, `web-ext` will throw an exception because there's no build directory. Run `yarn build` first to fix this.
@@ -50,7 +50,7 @@ The first time you run `yarn start`, `web-ext` will throw an exception because t
 
 | Script           | Description                                                          |
 | ---------------- | -------------------------------------------------------------------- |
-| `lint`           | Runs [tslint](https://github.com/palantir/tslint).                   |
+| `lint`           | Runs [eslint](https://eslint.org/).                                  |
 | `lint:extension` | Lints using [web-ext](https://github.com/mozilla/web-ext).           |
 | `test`           | Runs the [Jest](https://github.com/facebook/jest) unit test suite.   |
 | `test:format`    | Runs [Prettier](https://github.com/prettier/prettier) in check mode. |
