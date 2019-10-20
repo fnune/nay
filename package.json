@@ -5,11 +5,11 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brainlessdeveloper/nay.git"
+    "url": "https://github.com/fnune/nay.git"
   },
-  "homepage": "https://github.com/brainlessdeveloper/nay",
+  "homepage": "https://github.com/fnune/nay",
   "bugs": {
-    "url": "https://github.com/brainlessdeveloper/nay/issues",
+    "url": "https://github.com/fnune/nay/issues",
     "email": "fausto.nunez@mailbox.org"
   },
   "engines": {
@@ -34,7 +34,7 @@
     "typecheck": "tsc --noEmit",
     "zip": "mkdir -p ./artifacts && git archive HEAD --format=zip > ./artifacts/nay_-$(git describe --tags $(git rev-list --tags --max-count=1)).source.zip"
   },
-  "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://brainlessdeveloper.com)",
+  "author": "Fausto Núñez Alberro <fausto.nunez@mailbox.org> (https://fnune.com)",
   "license": "MIT",
   "jest": {
     "setupFiles": [

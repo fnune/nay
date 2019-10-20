@@ -39,7 +39,7 @@ const Rules: React.FC = () => {
         <h1>Nay! 😤</h1>
         <p>
           Say "nay!" to URLs in your blacklist. Disable links to matching URLs, and remember why you
-          did so. <a href="https://github.com/brainlessdeveloper/nay">See the code on GitHub</a>.
+          did so. <a href="https://github.com/fnune/nay">See the code on GitHub</a>.
         </p>
       </div>
       <form

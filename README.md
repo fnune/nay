@@ -1,6 +1,6 @@
 # Nay!
 
-[![Build Status](https://travis-ci.org/brainlessdeveloper/nay.svg?branch=master)](https://travis-ci.org/brainlessdeveloper/nay)
+[![Build Status](https://travis-ci.org/fnune/nay.svg?branch=master)](https://travis-ci.org/fnune/nay)
 
 > A WebExtension for Firefox and Chrome.
 
