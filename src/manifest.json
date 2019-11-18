@@ -27,7 +27,15 @@
   "content_scripts": [
     {
       "js": ["block.js"],
-      "matches": ["*://*/*"]
+      "matches": ["<all_urls>"]
+    },
+    {
+      "js": ["observe.js"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "js": ["styles.js"],
+      "matches": ["<all_urls>"]
     }
   ],
 
