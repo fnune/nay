@@ -20,6 +20,7 @@ const config: webpack.Configuration = {
     block: path.join(src, 'dom', 'block.ts'),
     observe: path.join(src, 'dom', 'observe.ts'),
     styles: path.join(src, 'dom', 'styles.ts'),
+    rules: path.join(src, 'dom', 'rules.ts'),
   },
   output: {
     path: build,
