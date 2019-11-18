@@ -6,8 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-- Support SPAs by blocking links incrementally via `MutationObserver`.
+## [0.3.0] - 2019-11-19
+
+### Fixed
+
 - If the user is already on an origin they want to block, we don't want to block all internal links. Nay! now avoids this by excluding rules that match the current origin.
+
+### Added
+
+- Support SPAs by blocking links incrementally via `MutationObserver`.
 
 ## [0.2.1] - 2019-09-16
 
