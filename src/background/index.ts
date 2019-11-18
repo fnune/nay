@@ -1,7 +1,7 @@
 import browser from 'webextension-polyfill'
 
 // Bulma color palette: https://bulma.io/documentation/overview/colors
-browser.browserAction.setBadgeBackgroundColor({ color: 'rgb(50, 115, 220)' })
+browser.browserAction.setBadgeBackgroundColor({ color: 'rgb(54, 54, 54)' })
 
 const amountBlockedPerTab: Dictionary<string, number> = {}
 
