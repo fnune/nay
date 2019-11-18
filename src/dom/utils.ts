@@ -1,5 +1,6 @@
 import browser from 'webextension-polyfill'
 
+import rulesSyncStorage from './rules'
 import { Link, LinkWithMatchingRule } from './types'
 
 /** Refines `Link` into `LinkWithMatchingRule` */
@@ -9,7 +10,7 @@ function isLinkWithMatchingRule(link: Link): link is LinkWithMatchingRule {
 
 /** Nodes containing media tags are not good targets for Nay's default 😤 prefix */
 function containsMediaTag(node: HTMLElement): boolean {
-  return node.querySelectorAll('img, svg, video, audio, embed, source, track').length > 0
+  return !!node.querySelector('img, svg, video, audio, embed, source, track')
 }
 
 /** Tells Nay's background script how many links were blocked by a run */
@@ -47,12 +48,11 @@ function formatReason(rule: Rule) {
  *
  * Runs a query for blocked links after it's done.
  */
-export async function block(links: HTMLAnchorElement[]): Promise<void> {
-  const rules = await browser.storage.sync
-    .get<NayStorage>('rules')
-    .then(({ rules: rulesString }) => (rulesString ? JSON.parse(rulesString) : []))
-    .catch(console.error)
-
+export async function block(
+  links: HTMLAnchorElement[],
+  rulesStorage: Promise<Rule[]> = rulesSyncStorage,
+): Promise<void> {
+  const rules = await rulesStorage
   const blocked = findBlockedLinks(links, rules.filter(doesNotMatchCurrentOrigin))
 
   blocked.forEach(({ link, rule }) => {
