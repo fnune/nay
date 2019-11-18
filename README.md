@@ -16,6 +16,7 @@ The currently implemented functionality is basic:
 - Prepending an angry emoji 😤 to the text content of matching links.
 - Intercepting clicks on those links with a prompt for confirmation that displays the reason for the blockage.
 - Showing how many links have been blocked in a tab.
+- Blocking links incrementally if they are added to the DOM after the initial page load.
 
 ## Install
 

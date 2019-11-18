@@ -1,0 +1,70 @@
+import browser from 'webextension-polyfill'
+
+import { Link, LinkWithMatchingRule } from './types'
+
+/** Refines `Link` into `LinkWithMatchingRule` */
+function isLinkWithMatchingRule(link: Link): link is LinkWithMatchingRule {
+  return !!link.rule
+}
+
+/** Nodes containing media tags are not good targets for Nay's default 😤 prefix */
+function containsMediaTag(node: HTMLElement): boolean {
+  return node.querySelectorAll('img, svg, video, audio, embed, source, track').length > 0
+}
+
+/** Tells Nay's background script how many links were blocked by a run */
+function notifyBlocked(amount: number): void {
+  browser.runtime.sendMessage<NotifyBlockedMessage>({ amount })
+}
+
+/** Match the user's rules against a list of links */
+function findBlockedLinks(links: HTMLAnchorElement[], rules: Rule[]): LinkWithMatchingRule[] {
+  return Array.from(links)
+    .map(link => ({ link, rule: rules.find(({ match }) => link.href.includes(match)) }))
+    .filter(isLinkWithMatchingRule)
+}
+
+/** The message that's alerted to the user when they click on a blocked link */
+function formatReason(rule: Rule) {
+  return [
+    `Nay! 😤 You blocked URLs matching ${rule.match}. `,
+    ...(rule.reason ? ['You left the note:', '\n\n', rule.reason, '\n\n'] : []),
+    "If you'd like to continue anyway, click OK or press Enter.",
+  ].join('')
+}
+
+/**
+ * This does the bulk of the work. It needs to be async to get
+ * the user's rules, which are saved on `browser.storage.sync`.
+ *
+ * Runs a query for blocked links after it's done.
+ */
+export async function block(links: HTMLAnchorElement[]): Promise<void> {
+  const rules = await browser.storage.sync
+    .get<NayStorage>('rules')
+    .then(({ rules: rulesString }) => (rulesString ? JSON.parse(rulesString) : []))
+    .catch(console.error)
+
+  const blocked = findBlockedLinks(links, rules)
+
+  blocked.forEach(({ link, rule }) => {
+    if (!containsMediaTag(link) && link.textContent) {
+      link.classList.add(NAY_CLASS)
+    }
+
+    link.onclick = event => {
+      const confirmation = confirm(formatReason(rule))
+
+      if (confirmation) {
+        return true
+      }
+
+      event.preventDefault()
+    }
+  })
+
+  // We can't trust `blocked.length` in this scope because this script
+  // may have been called by Nay's mutation observer, which reports
+  // incremental chunks of matched links.
+  notifyBlocked(document.getElementsByClassName(NAY_CLASS).length)
+}

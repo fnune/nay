@@ -18,6 +18,8 @@ const config: webpack.Configuration = {
     options: path.join(src, 'options', 'index.tsx'),
     popup: path.join(src, 'popup', 'index.tsx'),
     block: path.join(src, 'dom', 'block.ts'),
+    observe: path.join(src, 'dom', 'observe.ts'),
+    styles: path.join(src, 'dom', 'styles.ts'),
   },
   output: {
     path: build,
