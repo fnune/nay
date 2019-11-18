@@ -24,6 +24,14 @@ function findBlockedLinks(links: HTMLAnchorElement[], rules: Rule[]): LinkWithMa
     .filter(isLinkWithMatchingRule)
 }
 
+/**
+ * Exclude a rule that affects the current origin. If the user is already on
+ * an origin they want to block, we don't want to block all internal links.
+ */
+function doesNotMatchCurrentOrigin(rule: Rule): boolean {
+  return !window.location.origin.includes(rule.match)
+}
+
 /** The message that's alerted to the user when they click on a blocked link */
 function formatReason(rule: Rule) {
   return [
@@ -45,7 +53,7 @@ export async function block(links: HTMLAnchorElement[]): Promise<void> {
     .then(({ rules: rulesString }) => (rulesString ? JSON.parse(rulesString) : []))
     .catch(console.error)
 
-  const blocked = findBlockedLinks(links, rules)
+  const blocked = findBlockedLinks(links, rules.filter(doesNotMatchCurrentOrigin))
 
   blocked.forEach(({ link, rule }) => {
     if (!containsMediaTag(link) && link.textContent) {
